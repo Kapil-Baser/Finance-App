@@ -1,0 +1,8 @@
+1.1.1.1             one.one.one.one
+61.0.1.1            multiplay.bsnl.in
+4.2.2.1             a.resolvers.level3.net
+4.2.2.2             b.resolvers.level3.net
+4.2.2.3             c.resolvers.level3.net
+4.2.2.4             d.resolvers.level3.net
+4.2.2.5             e.resolvers.level3.net
+4.2.2.6             f.resolvers.level3.net
