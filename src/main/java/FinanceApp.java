@@ -1,25 +1,33 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.Scanner;
 import java.nio.file.Paths;
 
-public class Main {
+
+public class FinanceApp {
     public static void main(String[] args) {
+
+        System.out.println(new Date());
         if (args.length != 1) {
             System.out.println("Usage: financeapp <File Name>");
             return;
         }
 
         // Reading the given file
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<Transactions> list = new ArrayList<>();
         try (Scanner scan = new Scanner(Paths.get(args[0]))) {
+            String header = scan.nextLine();
             while (scan.hasNextLine()) {
-                list.add(scan.nextLine());
+                String transaction = scan.nextLine();
+                String[] str = transaction.split("[\",]+");
+                Transactions statement = new Transactions(str[3], Double.parseDouble(str[4]), str[1]);
+                list.add(statement);
             }
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
-
-        System.out.println(list);
+        list.getFirst().printAll();
     }
 }
