@@ -12,21 +12,13 @@ public class FinanceApp {
             System.out.println("Usage: financeapp <File Name>");
             return;
         }
-
         // Reading the given file
-        ArrayList<Transactions> list = new ArrayList<>();
         try (Scanner scan = new Scanner(Paths.get(args[0]))) {
-            String header = scan.nextLine();
-            while (scan.hasNextLine()) {
-                String transaction = scan.nextLine();
-                String[] str = transaction.split("[\",]+");
-                Transactions statement = new Transactions(str[3], Double.parseDouble(str[4]), str[1]);
-                list.add(statement);
-            }
+            UserInterface ui = new UserInterface(scan);
+            ui.start();
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
-        list.getFirst().printAll();
     }
 }
