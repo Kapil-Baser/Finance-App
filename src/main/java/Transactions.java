@@ -20,6 +20,10 @@ public class Transactions {
         return amount;
     }
 
+    public String getTransactionDate() {
+        return this.transactionDate;
+    }
+
     public void printAll() {
         System.out.print("Transaction Date\t");
         System.out.print("Item Description\t");
@@ -27,5 +31,10 @@ public class Transactions {
         System.out.printf("%s\t\t\t", this.transactionDate);
         System.out.printf("%s\t\t\t\t", this.description);
         System.out.printf("%s", this.amount);
+    }
+
+    @Override
+    public String toString() {
+        return this.transactionDate + "\t\t\t " + this.description + "\t\t\t\t" + this.amount;
     }
 }
