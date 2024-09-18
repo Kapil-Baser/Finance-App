@@ -43,15 +43,14 @@ public class UserInterface {
     }
 
     public static void printHeader() {
-        System.out.print("Transaction date\tDescription\t\t\t\t Cost\n");
-        System.out.println("--------------------------------------------------");
+        System.out.print("Transaction date\tDescription\t\t\t\t Cost\t\tCategory\n");
+        System.out.println("----------------------------------------------------------------");
     }
 
     public void printAll() {
         printHeader();
         for (Transactions transaction : transactionList) {
-            //System.out.println(transaction);
-            System.out.printf("%-12s\t\t%-25s%.2f\n", transaction.getTransactionDate(), transaction.getDescription(), transaction.getAmount());
+            System.out.printf("%-12s\t\t%-25s%.2f\t\t%-12s\n", transaction.getTransactionDate(), transaction.getDescription(), transaction.getAmount(), transaction.getCategory());
         }
     }
 }

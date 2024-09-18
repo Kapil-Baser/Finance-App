@@ -1,15 +1,17 @@
 import java.time.LocalDate;
 
 public class Transactions {
-    private String description;
-    private double amount;
-    private String transactionDate;
+    private final String description;
+    private final double amount;
+    private final String transactionDate;
+    private String category;
     //private LocalDate transactionDate;
 
     public Transactions(String des, double amount, String date) {
         this.description = des;
         this.amount = amount;
         this.transactionDate = date;
+        this.category = getCategory(des);
     }
 
     public String getDescription() {
@@ -36,5 +38,19 @@ public class Transactions {
     @Override
     public String toString() {
         return this.transactionDate + "\t\t\t " + this.description + "\t\t\t\t" + this.amount;
+    }
+
+    public String getCategory() {
+        return this.category;
+    }
+
+    private String getCategory(String description) {
+        String desL = description.toLowerCase();
+        if (desL.contains("cafe") || desL.contains("drink") || desL.contains("tea") || desL.contains("donuts")) {
+            return "Dining out";
+        } else if (desL.contains("popeyes") || desL.contains("doordash") || desL.contains("bbq") || desL.contains("starbucks")) {
+            return "Take out";
+        }
+        return "Unknown";
     }
 }
