@@ -25,6 +25,7 @@ public class UserInterface {
         while (true) {
             try {
                 if ((transaction = reader.readLine()) == null) {
+                    reader.close(); // Closing the file.
                     break;
                 }
                 String[] str = transaction.split("[\",]+");
@@ -33,7 +34,6 @@ public class UserInterface {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
         }
         /*String header = scanner.nextLine();
 

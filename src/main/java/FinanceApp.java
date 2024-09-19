@@ -21,7 +21,6 @@ public class FinanceApp {
             throw new RuntimeException(e);
         }
 
-
         /*try (Scanner scan = new Scanner(Paths.get(args[0]))) {
             UserInterface ui = new UserInterface(scan);
             ui.start();
