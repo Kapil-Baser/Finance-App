@@ -1,25 +1,48 @@
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.BufferedReader;
 
 public class UserInterface {
     private ArrayList<Transactions> transactionList;
-    private Scanner scanner;
+    //private Scanner scanner;
+    private BufferedReader reader;
 
-    public UserInterface(Scanner scan) {
-        this.scanner = scan;
+    public UserInterface(BufferedReader reader) {
+        //this.scanner = scan;
         this.transactionList = new ArrayList<>();
-
+        this.reader = reader;
     }
 
     public void start() {
-        String header = scanner.nextLine();
+        try {
+            String header = reader.readLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String transaction = null;
+        while (true) {
+            try {
+                if ((transaction = reader.readLine()) == null) {
+                    break;
+                }
+                String[] str = transaction.split("[\",]+");
+                Transactions statement = new Transactions(str[3], Double.parseDouble(str[4]), str[1]);
+                this.transactionList.add(statement);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        /*String header = scanner.nextLine();
 
         while (scanner.hasNextLine()) {
             String transaction = scanner.nextLine();
             String[] str = transaction.split("[\",]+");
             Transactions statement = new Transactions(str[3], Double.parseDouble(str[4]), str[1]);
             this.transactionList.add(statement);
-        }
+        }*/
         listCommands();
         processCommands();
     }
